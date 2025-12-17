@@ -3,7 +3,7 @@
 import { useAuth } from '../context/AuthContext'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function DashboardLayout({
   children,
@@ -12,6 +12,7 @@ export default function DashboardLayout({
 }) {
   const { isAuthenticated, user, logout } = useAuth()
   const router = useRouter()
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -29,38 +30,95 @@ export default function DashboardLayout({
 
   return (
     <div className="min-h-screen flex">
+      {/* Mobile Header */}
+      <div className="lg:hidden fixed top-0 left-0 right-0 bg-gray-800 text-white p-4 flex items-center justify-between z-50">
+        <h1 className="text-xl font-bold">Admin Panel</h1>
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="text-white focus:outline-none"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            {isSidebarOpen ? (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            ) : (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {/* Overlay for mobile */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        ></div>
+      )}
+
       {/* Sidebar */}
-      <aside className="w-64 bg-gray-800 text-white">
-        <div className="p-6">
+      <aside
+        className={`
+          w-64 bg-gray-800 text-white flex flex-col fixed h-screen z-50 transition-transform duration-300
+          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+          lg:translate-x-0
+        `}
+      >
+        <div className="p-6 hidden lg:block">
           <h1 className="text-2xl font-bold">Admin Panel</h1>
         </div>
-        <nav className="mt-6">
+        <nav className="mt-6 lg:mt-0 flex-1 overflow-y-auto">
           <Link
             href="/dashboard"
             className="block px-6 py-3 hover:bg-gray-700 transition"
+            onClick={() => setIsSidebarOpen(false)}
           >
             📊 Dashboard
           </Link>
           <Link
             href="/dashboard/gallery"
             className="block px-6 py-3 hover:bg-gray-700 transition"
+            onClick={() => setIsSidebarOpen(false)}
           >
             🖼️ Gallery
           </Link>
           <Link
             href="/dashboard/about"
             className="block px-6 py-3 hover:bg-gray-700 transition"
+            onClick={() => setIsSidebarOpen(false)}
           >
             ℹ️ About Us
           </Link>
           <Link
             href="/dashboard/contact"
             className="block px-6 py-3 hover:bg-gray-700 transition"
+            onClick={() => setIsSidebarOpen(false)}
           >
             📞 Contact
           </Link>
+          <Link
+            href="/dashboard/files"
+            className="block px-6 py-3 hover:bg-gray-700 transition"
+            onClick={() => setIsSidebarOpen(false)}
+          >
+            🗂️ Files
+          </Link>
         </nav>
-        <div className="absolute bottom-0 w-64 p-6 border-t border-gray-700">
+        <div className="p-6 border-t border-gray-700">
           <div className="mb-4">
             <p className="text-sm text-gray-400">Logged in as</p>
             <p className="font-semibold">{user?.username}</p>
@@ -75,7 +133,7 @@ export default function DashboardLayout({
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-8 overflow-y-auto">
+      <main className="flex-1 lg:ml-64 p-8 pt-20 lg:pt-8 overflow-y-auto">
         {children}
       </main>
     </div>
