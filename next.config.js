@@ -2,8 +2,23 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost'],
-  },
-}
+    remotePatterns: [
+      // Local backend
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '8080',
+        pathname: '/uploads/**',
+      },
 
-module.exports = nextConfig
+      // Railway deployed backend
+      {
+        protocol: 'https',
+        hostname: 'metropolitan-marketing-website-b-production-4c0a.up.railway.app',
+        pathname: '/uploads/**',
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;
