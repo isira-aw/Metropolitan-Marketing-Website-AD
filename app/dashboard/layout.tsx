@@ -81,41 +81,36 @@ export default function DashboardLayout({
         <div className="p-6 hidden lg:block">
           <h1 className="text-2xl font-bold">Admin Panel</h1>
         </div>
-        <nav className="mt-6 lg:mt-0 flex-1 overflow-y-auto">
-          <Link
-            href="/dashboard"
-            className="block px-6 py-3 hover:bg-gray-700 transition"
-            onClick={() => setIsSidebarOpen(false)}
-          >
+        <nav className="mt-6">
+          <Link href="/dashboard" className="block px-6 py-3 hover:bg-gray-700 transition">
             📊 Dashboard
           </Link>
-          <Link
-            href="/dashboard/gallery"
-            className="block px-6 py-3 hover:bg-gray-700 transition"
-            onClick={() => setIsSidebarOpen(false)}
-          >
+          <Link href="/dashboard/products" className="block px-6 py-3 hover:bg-gray-700 transition">
+            🛍️ Products
+          </Link>
+          <Link href="/dashboard/brands" className="block px-6 py-3 hover:bg-gray-700 transition">
+            🏷️ Brands
+          </Link>
+          <Link href="/dashboard/categories" className="block px-6 py-3 hover:bg-gray-700 transition">
+            📂 Categories
+          </Link>
+          <Link href="/dashboard/gallery" className="block px-6 py-3 hover:bg-gray-700 transition">
             🖼️ Gallery
           </Link>
-          <Link
-            href="/dashboard/about"
-            className="block px-6 py-3 hover:bg-gray-700 transition"
-            onClick={() => setIsSidebarOpen(false)}
-          >
+          <Link href="/dashboard/about" className="block px-6 py-3 hover:bg-gray-700 transition">
             ℹ️ About Us
           </Link>
-          <Link
-            href="/dashboard/contact"
-            className="block px-6 py-3 hover:bg-gray-700 transition"
-            onClick={() => setIsSidebarOpen(false)}
-          >
+          <Link href="/dashboard/contact" className="block px-6 py-3 hover:bg-gray-700 transition">
             📞 Contact
           </Link>
-          <Link
-            href="/dashboard/files"
-            className="block px-6 py-3 hover:bg-gray-700 transition"
-            onClick={() => setIsSidebarOpen(false)}
-          >
+          <Link href="/dashboard/files" className="block px-6 py-3 hover:bg-gray-700 transition">
             🗂️ Files
+          </Link>
+          <Link href="/dashboard/admins" className="block px-6 py-3 hover:bg-gray-700 transition">
+            👥 Admins
+          </Link>
+          <Link href="/dashboard/profile" className="block px-6 py-3 hover:bg-gray-700 transition">
+            👤 Profile
           </Link>
         </nav>
         <div className="p-6 border-t border-gray-700">
