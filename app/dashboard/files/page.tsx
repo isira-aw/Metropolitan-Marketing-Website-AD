@@ -118,16 +118,6 @@ export default function FileManagementPage() {
           </div>
         )}
       </div>
-
-      <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-6">
-        <h3 className="text-lg font-semibold mb-2 text-blue-800">ℹ️ About Unused Images</h3>
-        <ul className="list-disc list-inside text-gray-700 space-y-2">
-          <li>Images that are not used in Gallery or About Us are considered unused</li>
-          <li>Deleting unused images will free up storage space</li>
-          <li>This action cannot be undone</li>
-          <li>Refresh this page to see updated list after deletion</li>
-        </ul>
-      </div>
     </div>
   )
 }
