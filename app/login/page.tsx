@@ -85,7 +85,7 @@ export default function LoginPage() {
         </form>
 
         <div className="mt-6 text-center text-sm text-gray-600">
-          <p>Default credentials: admin / admin123</p>
+          <p>Default credentials: admin/ admin123</p>
         </div>
       </div>
     </div>

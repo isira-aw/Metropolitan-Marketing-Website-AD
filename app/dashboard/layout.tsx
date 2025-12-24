@@ -88,6 +88,9 @@ export default function DashboardLayout({
           <Link href="/dashboard/home" className="block px-6 py-3 hover:bg-gray-700 transition">
             🏠 Home
           </Link>
+          <Link href="/dashboard/divisions" className="block px-6 py-3 hover:bg-gray-700 transition">
+            🔧 Divisions
+          </Link>
           <Link href="/dashboard/news" className="block px-6 py-3 hover:bg-gray-700 transition">
             📰 News
           </Link>
